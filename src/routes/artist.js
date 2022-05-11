@@ -5,8 +5,12 @@ const artistController = require('../controllers/artist');
 
 const router = express.Router();
 
+// Create an artist
 router.post('/', artistController.createArtist);
-
+// Read all artists
 router.get('/', artistController.readArtist);
+// Read one artist, by a specific artistId
+router.get('/:artistId', artistController.readById);
+
 
 module.exports = router;

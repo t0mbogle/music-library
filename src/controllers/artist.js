@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const getDb = require('../services/db');
 
 // creates an instance of artist
@@ -15,7 +16,6 @@ exports.createArtist = async (req, res) => {
     } catch (err) {
       res.sendStatus(500).json(err);
     }
-  
     db.close();
   };
 
@@ -32,3 +32,21 @@ exports.readArtist = async (_, res) => {
   }
   db.close();
 };
+
+// Returns a specific artist
+exports.readById = async (req, res) => {
+  const db = await getDb();
+  const { artistId } = req.params;
+
+  const [[artist]] = await db.query('SELECT * FROM Artist WHERE id = ?', [
+    artistId,
+  ]);
+
+  if (!artist) {
+    res.status(404);
+  } else {
+    res.status(200).json(artist);
+  }
+  // This cecks if the artistId is there or not(truthy/falsy)
+  db.close();
+}
