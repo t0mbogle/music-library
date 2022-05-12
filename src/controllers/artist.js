@@ -3,21 +3,21 @@ const getDb = require('../services/db');
 
 // creates an instance of artist
 exports.createArtist = async (req, res) => {
-    const db = await getDb();
-    const { name, genre } = req.body;
+  const db = await getDb();
+  const { name, genre } = req.body;
   
-    try {
-      await db.query('INSERT INTO Artist (name, genre) VALUES (?, ?)', [
-          name,
-          genre,
-      ]);
+  try {
+    await db.query('INSERT INTO Artist (name, genre) VALUES (?, ?)', [
+        name,
+        genre,
+    ]);
   
-      res.sendStatus(201);
-    } catch (err) {
-      res.sendStatus(500).json(err);
-    }
-    db.close();
-  };
+    res.sendStatus(201);
+  } catch (err) {
+    res.sendStatus(500).json(err);
+  }
+  db.close();
+};
 
 // This function will read all artists and return them to the user
 exports.readArtist = async (_, res) => {
@@ -49,4 +49,27 @@ exports.readById = async (req, res) => {
   }
   // This cecks if the artistId is there or not(truthy/falsy)
   db.close();
-}
+};
+
+exports.updateArtist = async (req, res) => {
+  const db = await getDb();
+  const data = req.body;
+  const { artistId } = req.params;
+
+  try {
+    const [
+      { affectedRows }, 
+    ] = await db.query('UPDATE Artist SET ? WHERE id = ?', [data, artistId]);
+
+  // If something in the patch request is not changed 
+    if (!affectedRows) {
+      res.status(404);
+    } else {
+    res.status(200).send();
+    }
+  } catch (err) {
+    res.status(500);
+  }
+  
+  db.close();
+};

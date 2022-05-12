@@ -11,6 +11,8 @@ router.post('/', artistController.createArtist);
 router.get('/', artistController.readArtist);
 // Read one artist, by a specific artistId
 router.get('/:artistId', artistController.readById);
+// Updates the details of an artist via name and/or genre
+router.patch('/:artistId', artistController.updateArtist);
 
 
 module.exports = router;
