@@ -1,13 +1,27 @@
 # Music Library
 
-A backend project linking together Docker, MySQL Workbench and Express to create a music library that can be managed and added to.
+Music Library is a backend API that allows users to perform CRUD operations to manipulate the content of a database. See below for how to do this!
+
+## HTTP Requests
+
+Create an artist with <strong>POST<strong> `/artist`
+Delete an artist with <strong>DELETE<strong> `/artist/:artistId`
+Update an artists name or genre with <strong>PATCH<strong> `/artist/:artistId`
+Read all artists with <strong>GET<strong> `/artist`
+Read a specific artist with <strong>GET<strong> `/artist/:artistId`
 
 ## Concepts Covered
 
 - Database design
 - SQL
-- MYSQL
+- TDD (Mocha)
 - CRUD Operations
+
+## Software Used
+
+- Docker
+- MySQL Workbench
+- Postman
 
 ## Acknowledgements
 
@@ -15,4 +29,4 @@ This is a project from the Software Engineering course by Manchester Codes.
 
 ## Project Status
 
-Starting up!
+Not receiving updates currently
