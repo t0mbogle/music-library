@@ -4,10 +4,10 @@ Music Library is a backend API that allows users to perform CRUD operations to m
 
 ## HTTP Requests
 
-Create an artist with <strong>POST</strong> `/artist`
-Delete an artist with <strong>DELETE</strong> `/artist/:artistId`
-Update an artists name or genre with <strong>PATCH</strong> `/artist/:artistId`
-Read all artists with <strong>GET</strong> `/artist`
+Create an artist with <strong>POST</strong> `/artist` <br>
+Delete an artist with <strong>DELETE</strong> `/artist/:artistId` <br>
+Update an artists name or genre with <strong>PATCH</strong> `/artist/:artistId` <br>
+Read all artists with <strong>GET</strong> `/artist` <br>
 Read a specific artist with <strong>GET</strong> `/artist/:artistId`
 
 ## Concepts Covered
