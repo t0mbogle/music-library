@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const getDb = require('../services/db');
 
 // creates an instance of artist
@@ -71,5 +70,25 @@ exports.updateArtist = async (req, res) => {
     res.status(500);
   }
   
+  db.close();
+};
+
+// Deletes an artists records from the database
+exports.deleteArtist = async (req, res) => {
+  const db = await getDb();
+  const { artistId } = req.params;
+
+  try {
+    const [{ affectedRows }] = await db.query('DELETE FROM Artist WHERE id = ?', [artistId]);
+
+    if(!affectedRows) {
+      res.sendStatus(404) 
+    } else {
+      res.sendStatus(200);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+  }
+
   db.close();
 };
