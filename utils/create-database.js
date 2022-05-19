@@ -34,12 +34,23 @@ const setUpDatabase = async () => {
     // create the database if it doesn't already exist
     await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
     await db.query(`USE ${DB_NAME}`);
+    // Creates artisit table
     await db.query(`CREATE TABLE IF NOT EXISTS Artist (
       id INT PRIMARY KEY auto_increment,
       name VARCHAR(25),
       genre VARCHAR(25)
     )`);
-    // configures table, via SQL statement as a string, sent to database. 
+    // Creates album table
+    await db.query(`CREATE DATABASE IF NOT EXISTS Album (
+      id INT PRIMARY KEY auto_increment,
+      name VARCHAR(25),
+      year INT,
+      artistId INT,
+      FOREIGN KEY (artistId) REFERENCES Artist(id)
+    )`);
+    
+    // configures table, via SQL statement as a string, sent to database.
+
     db.close();
 
   } catch (err) {

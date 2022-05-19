@@ -29,4 +29,4 @@ This is a project from the Software Engineering course by Manchester Codes.
 
 ## Project Status
 
-Not receiving updates currently
+Album database coming soon

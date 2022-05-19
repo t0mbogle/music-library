@@ -3,7 +3,7 @@ const request = require('supertest');
 const getDb = require('../src/services/db');
 const app = require('../src/app');
 
- describe('create artist', () => {
+describe('create artist', () => {
   let db;
   beforeEach(async () => (db = await getDb()));
 
