@@ -1,4 +1,10 @@
 const express = require('express');
 const albumController = require('../controllers/album');
-const artistController = require('../controllers/artist');
+// require the controllers so that they can be referenced in the routes
 
+const router = express.Router();
+
+// Creates an album
+router.post('/', albumController.createAlbum);
+
+module.exports = router;

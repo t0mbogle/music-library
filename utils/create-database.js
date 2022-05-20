@@ -34,7 +34,7 @@ const setUpDatabase = async () => {
     // create the database if it doesn't already exist
     await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
     await db.query(`USE ${DB_NAME}`);
-    // Creates artisit table
+    // Creates artist table
     await db.query(`CREATE TABLE IF NOT EXISTS Artist (
       id INT PRIMARY KEY auto_increment,
       name VARCHAR(25),
@@ -50,8 +50,7 @@ const setUpDatabase = async () => {
     )`);
     
     // configures table, via SQL statement as a string, sent to database.
-
-    db.close();
+    await db.end();
 
   } catch (err) {
    // if something goes wrong, console.log the error and the current environment variables
