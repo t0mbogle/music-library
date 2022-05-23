@@ -8,5 +8,7 @@ const router = express.Router();
 router.post('/', albumController.createAlbum);
 // Read all albums
 router.get('/', albumController.readAlbum);
+// Read one album, by a specific albumId
+router.get('/:albumId', albumController.readByAlbumId);
 
 module.exports = router;

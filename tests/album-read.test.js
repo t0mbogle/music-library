@@ -17,12 +17,12 @@ describe('read album', () => {
                 'rock',
             ]),
             db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
-                'Kylie Minogue',
-                'pop',
+                'Tom Misch',
+                'soul',
             ]),
             db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
-                'Dave Brubeck',
-                'jazz',
+                'Disclosure',
+                'house',
             ]), 
         ]);
         // insert info into 'Artist' then assign to variable
@@ -35,13 +35,13 @@ describe('read album', () => {
                 artists[0].id,
             ]),
             db.query('INSERT INTO Album (name, year, artistId) VALUES(?, ?, ?)', [
-                'Disco',
-                2020,
+                'Geography',
+                2018,
                 artists[1].id,
             ]),
             db.query('INSERT INTO Album (name, year, artistId) VALUES(?, ?, ?)', [
-                'Time In',
-                1966,
+                'Settle',
+                2013,
                 artists[2].id,
             ]),
         ]);
@@ -73,7 +73,7 @@ describe('read album', () => {
         });
     });
     // Find details of a single album
-    describe('/album/:artistId', () => {
+    describe('/album/:albumId', () => {
         describe('GET', () => {
             it('returns a single album with the correct id', async () => {
                 const expected = albums[0];

@@ -42,12 +42,12 @@ exports.readById = async (req, res) => {
   ]);
 
   if (!artist) {
-    res.status(404);
+    res.sendStatus(404);
   } else {
     res.status(200).json(artist);
   }
   // This cecks if the artistId is there or not(truthy/falsy)
-  db.close();
+  await db.end();
 };
 
 exports.updateArtist = async (req, res) => {
@@ -62,15 +62,15 @@ exports.updateArtist = async (req, res) => {
 
   // If something in the patch request is not changed 
     if (!affectedRows) {
-      res.status(404);
+      res.sendStatus(404);
     } else {
-    res.status(200).send();
+      res.status(200).send();
     }
   } catch (err) {
-    res.status(500);
+    res.status(500).json(err);
   }
   
-  db.close();
+  await db.end();
 };
 
 // Deletes an artists records from the database
