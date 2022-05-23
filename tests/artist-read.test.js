@@ -31,7 +31,7 @@ describe('read artist', () => {
   
     afterEach(async () => {
       await db.query('DELETE FROM Artist');
-      await db.close();
+      await db.end();
     });
   
     describe('/artist', () => {
@@ -50,7 +50,7 @@ describe('read artist', () => {
         });
       });
     });
-    // Find the details of a single artist when inputed http://localhost:3000/artist/<artisitId>
+    // Find the details of a single artist when inputed http://localhost:3000/artist/<artistId>
     describe('/artist/:artistId', () => {
       describe('GET', () => {
         it('returns a single artist with the correct id', async () => {

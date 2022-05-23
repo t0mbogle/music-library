@@ -6,5 +6,7 @@ const router = express.Router();
 
 // Creates an album
 router.post('/', albumController.createAlbum);
+// Read all albums
+router.get('/', albumController.readAlbum);
 
 module.exports = router;

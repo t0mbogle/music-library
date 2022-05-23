@@ -17,7 +17,7 @@ describe('create album', () => {
 
     afterEach(async () => {
         await db.query('DELETE FROM Album');
-        await db.close();
+        await db.end();
     });
 
     describe('/artist/:artistId/album', () => {
