@@ -12,5 +12,7 @@ router.get('/', albumController.readAlbum);
 router.get('/:albumId', albumController.readByAlbumId);
 // Updates the details of an album via name and/or year
 router.patch('/:albumId', albumController.updateAlbum);
+// Deletes an album from the database
+router.delete('/:albumId', albumController.deleteAlbum);
 
 module.exports = router;

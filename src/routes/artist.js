@@ -13,7 +13,7 @@ router.get('/', artistController.readArtist);
 router.get('/:artistId', artistController.readById);
 // Updates the details of an artist via name and/or genre
 router.patch('/:artistId', artistController.updateArtist);
-// Deletes a record from your database
+// Deletes an artist from the database
 router.delete('/:artistId', artistController.deleteArtist);
 
 
