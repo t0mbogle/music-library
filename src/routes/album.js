@@ -10,5 +10,7 @@ router.post('/', albumController.createAlbum);
 router.get('/', albumController.readAlbum);
 // Read one album, by a specific albumId
 router.get('/:albumId', albumController.readByAlbumId);
+// Updates the details of an album via name and/or year
+router.patch('/:albumId', albumController.updateAlbum);
 
 module.exports = router;

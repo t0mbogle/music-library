@@ -51,3 +51,25 @@ exports.readByAlbumId = async (req, res) => {
     await db.end();
     // db.end because the promise needs to be closed.
 };
+
+// Updates an album
+exports.updateAlbum = async (req, res) => {
+    const db = await getDb();
+    const data = req.body;
+    const { albumId } = req.params;
+
+    try {
+        const [
+            { affectedRows },
+        ] = await db.query('UPDATE Album SET ? WHERE id = ?', [data, albumId]);
+
+        if (!affectedRows) {
+            res.sendStatus(404);
+        } else {
+            res.status(200).send();
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+    await db.end();
+};
